@@ -38,14 +38,14 @@ func send(command string) {
 	defer conn.Close()
 
 	for  {
-		servOk(conn)
+		check_status(conn)
 		conn.Write([]byte(command + "\n"))
-		servOk(conn)
+		check_status(conn)
 		break
 	}
 }
 
-func servOk(conn net.Conn) {
+func check_status(conn net.Conn) {
 	m := bufio.NewReader(conn)
 	ok,_ := m.ReadString('\n')
 	if byte(ok[0]) != 79 || byte(ok[1]) != 75 {
