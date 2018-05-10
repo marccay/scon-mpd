@@ -10,17 +10,33 @@ import (
 )
 
 
-
 func single_att(attribute string) string {
         att := status()
-        return att[attribute]
+	is_On, _ := is_att_on(att[attribute])
+        return is_On
+}
+
+func is_att_on(stat string) (string, int) {
+	if stat == "0" {
+		return "off", 0
+	} else {
+		return "on", 1
+	}
 }
 
 func print_status() {
-        attributes := status()
-        for i, x := range attributes {
-                fmt.Println(i,x)
-        }
+        att := status()
+	fmt.Println("state:", att["state"])
+	is_On, _ := is_att_on(att["repeat"])
+	fmt.Println("repeat:", is_On)
+	is_On, _ = is_att_on(att["random"])
+	fmt.Println("random:", is_On)
+	is_On, _ = is_att_on(att["single"])
+	fmt.Println("single:", is_On)
+	is_On, _ = is_att_on(att["consume"])
+	fmt.Println("consume:", is_On)
+	is_On, _ = is_att_on(att["xfade"])
+	fmt.Println("crossfade:", is_On)
 }
 
 func status() map[string]string {

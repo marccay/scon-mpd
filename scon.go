@@ -9,6 +9,10 @@ func main() {
 		os.Exit(1)
 	} else {
 		cmd := os.Args[1]
+		var opt string
+		if len(os.Args) == 3 {
+			opt = os.Args[2]
+		}
 		switch cmd {
 			case "play":
 				send("play")
@@ -30,7 +34,7 @@ func main() {
 			case "previous":
 				send("previous")
 			case "status":
-				print_status()
+				status_tree(opt)
 			default:
 				os.Exit(1)
 		}
