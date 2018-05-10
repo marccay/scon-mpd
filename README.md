@@ -8,9 +8,9 @@ Basic Syntax:
 
 Commands:
 
-	"play"	:: play current song
-	"pause" :: pause,or un-pause
-	"next" :: play next song
-	"previous" :: play previous song
+	"play"		::	play current song
+	"pause" 	::	pause,or un-pause
+	"next" 		::	play next song
+	"previous" 	::	play previous song
 
 Note: No output, purpose is for media key bindings.
