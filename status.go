@@ -12,8 +12,12 @@ import (
 
 func single_att(attribute string) string {
         att := status()
-	is_On, _ := is_att_on(att[attribute])
-        return is_On
+	if attribute == "state" {
+		return att[attribute]
+	} else {
+		is_On, _ := is_att_on(att[attribute])
+		return is_On
+	}
 }
 
 func is_att_on(stat string) (string, int) {

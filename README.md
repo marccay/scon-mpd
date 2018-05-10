@@ -20,6 +20,14 @@ Note: Above basic commands produce NO output, purpose is for media key bindings.
 
 CLI Commands:
 	
-	"status"	::	print status of toggles/controls
+	scon-mpd [command] [option]
 
+	"status"	::	print status of toggles/controls
+	
+		: "state"
+		: "repeat"
+		: "random" | "rand"
+		: "single"
+		: "consume"
+		: "crossfade" | "fade" | "xfade"
 
