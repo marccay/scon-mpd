@@ -1,9 +1,6 @@
 package main
 
 import (
-//	"fmt"
-	"net"
-	"bufio"
 	"os"
 )
 
@@ -19,37 +16,25 @@ func main() {
 				send("stop")
 			case "pause":
 				send("pause")
+			case "playpause":
+				state := single_att("state")
+				if state == "play" {
+					send("pause")
+				} else if state == "pause" {
+					send("pause")
+				} else {
+					send("play")
+				}
 			case "next":
 				send("next")
 			case "previous":
 				send("previous")
+			case "status":
+				print_status()
 			default:
 				os.Exit(1)
 		}
 	}
 
-}
-
-func send(command string) {
-	conn, err := net.Dial("tcp", ":6600")
-	if err != nil {
-		os.Exit(1)
-	}
-	defer conn.Close()
-
-	for  {
-		check_status(conn)
-		conn.Write([]byte(command + "\n"))
-		check_status(conn)
-		break
-	}
-}
-
-func check_status(conn net.Conn) {
-	m := bufio.NewReader(conn)
-	ok,_ := m.ReadString('\n')
-	if byte(ok[0]) != 79 || byte(ok[1]) != 75 {
-		os.Exit(1)
-	}
 }
 
