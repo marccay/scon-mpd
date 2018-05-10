@@ -16,4 +16,10 @@ Commands:
 	"next" 		::	play next song
 	"previous" 	::	play previous song
 
-Note: No output, purpose is for media key bindings.
+Note: Above basic commands produce NO output, purpose is for media key bindings.
+
+CLI Commands:
+	
+	"status"	::	print status of toggles/controls
+
+
