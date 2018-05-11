@@ -32,7 +32,7 @@ func main() {
 			case "next":
 				send("next")
 			case "previous":
-				send("previous")
+				previous(opt)
 			case "status":
 				status_tree(opt)
 			default:

@@ -4,7 +4,24 @@ import (
 	"net"
 	"bufio"
 	"os"
+	"strconv"
 )
+
+
+func previous(option string) {
+	if option == "smart" || option == "s" {
+		elapsed, _, song_id := song_time()
+		if elapsed >= 10.00 {
+			cmd := "seek " + strconv.FormatUint(song_id, 10) + " 0"
+			send(cmd)
+		} else {
+			send("previous")
+		}
+	} else {
+		send("previous")
+	}
+}
+
 
 
 func send(command string) {

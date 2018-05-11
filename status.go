@@ -31,7 +31,7 @@ func is_att_on(stat string) (string, int) {
 	}
 }
 
-func song_time() (float64, float64) {
+func song_time() (float64, float64, uint64) {
 	att := status()
 	duration, err := strconv.ParseFloat(att["duration"], 64)
 	if err != nil {
@@ -41,7 +41,11 @@ func song_time() (float64, float64) {
 	if err != nil {
 		os.Exit(1)
 	}
-	return elapsed, duration
+	song_id, err := strconv.ParseUint(att["song"], 10, 64) 
+	if err != nil {
+		os.Exit(1)
+	}
+	return elapsed, duration, song_id 
 
 }
 
