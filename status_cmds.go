@@ -24,6 +24,12 @@ func status_tree (opt string) {
 			fmt.Println(single_att("xfade"))
 		case "state":
 			fmt.Println(single_att(opt))
+		case "time":
+			fmt.Println(single_att(opt))
+		case "elapsed":
+			fmt.Println(single_att(opt))
+		case "duration":
+			fmt.Println(single_att(opt))
 		default:
 			fmt.Println("option not available")
 			os.Exit(1)

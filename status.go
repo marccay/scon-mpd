@@ -7,13 +7,16 @@ import (
 	"bufio"
 	"strings"
 	"net"
+	"strconv"
 )
 
 
 func single_att(attribute string) string {
         att := status()
-	if attribute == "state" {
+	if attribute == "state" || attribute == "duration" || attribute == "elapsed" {
 		return att[attribute]
+	} else if attribute == "time" {
+		return att["elapsed"] + "/" + att["duration"]
 	} else {
 		is_On, _ := is_att_on(att[attribute])
 		return is_On
@@ -28,6 +31,21 @@ func is_att_on(stat string) (string, int) {
 	}
 }
 
+func song_time() (float64, float64) {
+	att := status()
+	duration, err := strconv.ParseFloat(att["duration"], 64)
+	if err != nil {
+		os.Exit(1)
+	}
+	elapsed, err := strconv.ParseFloat(att["elapsed"], 64)
+	if err != nil {
+		os.Exit(1)
+	}
+	return elapsed, duration
+
+}
+
+
 func print_status() {
         att := status()
 	fmt.Println("state:", att["state"])
@@ -41,6 +59,11 @@ func print_status() {
 	fmt.Println("consume:", is_On)
 	is_On, _ = is_att_on(att["xfade"])
 	fmt.Println("crossfade:", is_On)
+
+	if att["state"] == "play" || att["state"] == "pause" {
+		fmt.Println("elapsed", att["elapsed"])
+		fmt.Println("duration", att["duration"])
+	}
 }
 
 func status() map[string]string {
