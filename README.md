@@ -25,12 +25,12 @@ CLI Commands:
 	"status"	::	print status of toggles/controls
 		
 		: [options]	
-		: "state"
-		: "repeat"
-		: "random" | "rand"
-		: "single"
-		: "consume"
-		: "crossfade" | "fade" | "xfade"
+		: "state"					play state: play/pause/stopped
+		: "repeat"					repeat toggle: on/off
+		: "random" | "rand"				random toggle: on/off
+		: "single"					single repeat: on/off
+		: "consume"					consume song from playlist after play: on/off
+		: "crossfade" | "fade" | "xfade"		crossfade: on/off
 		: "time"					prints elapsed/duration
-		: "elapsed"
-		: "duration"
+		: "elapsed"					elapsed time of song in minutes
+		: "duration"					total duration of song in minutes
