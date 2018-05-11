@@ -23,11 +23,14 @@ CLI Commands:
 	scon-mpd [command] [option]
 
 	"status"	::	print status of toggles/controls
-	
+		
+		: [options]	
 		: "state"
 		: "repeat"
 		: "random" | "rand"
 		: "single"
 		: "consume"
 		: "crossfade" | "fade" | "xfade"
-
+		: "time"					prints elapsed/duration
+		: "elapsed"
+		: "duration"
