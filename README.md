@@ -15,6 +15,8 @@ Commands:
 	"stop"		::	stop mpd
 	"next" 		::	play next song
 	"previous" 	::	play previous song
+		: [options]
+		: "smart" | "s"					smart previous, rewind current song first
 
 Note: Above basic commands produce NO output, purpose is for media key bindings.
 
