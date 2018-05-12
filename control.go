@@ -22,6 +22,27 @@ func previous(option string) {
 	}
 }
 
+func toggle(command string, option string) {
+	var opt string
+	current_att := single_att(command)
+
+	if option == "" {
+		if current_att == "on" {
+			opt = "0"
+		} else {
+			opt = "1"
+		}
+	} else if option == "on" || option == "1" || option == "ON" {
+		opt = "1"
+	} else if option == "off" || option == "0" || option == "OFF" {
+		opt = "0"
+	} else {
+		os.Exit(1)
+	}
+
+	cmd := command + " " + opt
+	send(cmd) 
+}
 
 
 func send(command string) {

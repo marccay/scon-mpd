@@ -35,6 +35,14 @@ func main() {
 				previous(opt)
 			case "status":
 				status_tree(opt)
+			case "repeat":
+				toggle("repeat", opt)
+			case "random", "rand":
+				toggle("random", opt)
+			case "single":
+				toggle("single", opt)
+			case "consume":
+				toggle("consume", opt)
 			default:
 				os.Exit(1)
 		}
