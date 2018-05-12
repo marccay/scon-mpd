@@ -25,26 +25,26 @@ CLI Commands:
 	
 	scon-mpd [command] [option]
 
-	"repeat"	::	toggle repeat
+		"currentsong" | "current	::	print info on current song
+
+		"repeat"			::	toggle repeat
 		: "on" | "off"
 
-	"random"	::	toggle random
+		"random"			::	toggle random
 		: "on" | "off"
 
-	"single"	::	toggle single mode (repeat song)
+		"single"			::	toggle single mode (repeat song)
 		: "on" | "off"
 	
-	"consume"	::	toggle consume mode (song removed from playlist after play)
+		"consume"			::	toggle consume mode (song removed from playlist after play)
 		: "on" | "off"
 
-	"crossfade" | "fade" | "xfade"		toggle crossfade (ON or default 10 seconds)
-		: "off" | [seconds]		[seconds] = number of seconds
+		"crossfade" | "fade" | "xfade"		toggle crossfade (ON or default 10 seconds)
+		: "off" | [seconds]				[seconds] = number of seconds
 
 
 
-	"status"	::	print status of toggles/controls
-		
-		: [options]	
+		"status"			::	print status of toggles/controls
 		: "state"					play state: play/pause/stopped
 		: "repeat"					repeat toggle: on/off
 		: "random" | "rand"				random toggle: on/off
