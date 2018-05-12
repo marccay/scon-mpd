@@ -15,6 +15,7 @@ Commands:
 	"stop"		::	stop mpd
 	"next" 		::	play next song
 	"previous" 	::	play previous song
+
 		: [options]
 		: "smart" | "s"					smart previous, rewind current song first
 
@@ -23,6 +24,23 @@ Note: Above basic commands produce NO output, purpose is for media key bindings.
 CLI Commands:
 	
 	scon-mpd [command] [option]
+
+	"repeat"	::	toggle repeat
+		: "on" | "off"
+
+	"random"	::	toggle random
+		: "on" | "off"
+
+	"single"	::	toggle single mode (repeat song)
+		: "on" | "off"
+	
+	"consume"	::	toggle consume mode (song removed from playlist after play)
+		: "on" | "off"
+
+	"crossfade" | "fade" | "xfade"		toggle crossfade (ON or default 10 seconds)
+		: "off" | [seconds]		[seconds] = number of seconds
+
+
 
 	"status"	::	print status of toggles/controls
 		
@@ -36,3 +54,4 @@ CLI Commands:
 		: "time"					prints elapsed/duration
 		: "elapsed"					elapsed time of song in minutes
 		: "duration"					total duration of song in minutes
+	
