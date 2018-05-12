@@ -43,6 +43,8 @@ func main() {
 				toggle("single", opt)
 			case "consume":
 				toggle("consume", opt)
+			case "crossfade", "xfade", "fade":
+				crossfade(opt)
 			default:
 				os.Exit(1)
 		}

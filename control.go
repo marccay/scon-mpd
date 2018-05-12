@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net"
 	"bufio"
 	"os"
@@ -19,6 +20,35 @@ func previous(option string) {
 		}
 	} else {
 		send("previous")
+	}
+}
+
+func crossfade(option string) {
+	var opt int64
+	opt, err := strconv.ParseInt(option, 10, 64)
+	fmt.Println(opt)
+	if err != nil {
+		if option == "on" || option == "ON" {
+			opt = 10
+		} else if option == "off" || option == "OFF" {
+			opt = 0
+		} else if option == "" {
+			current_att := single_att("xfade")
+			if current_att == "" {
+				opt = 10
+			} else {
+				opt = 0
+			}
+		} else {
+			os.Exit(1)
+		}
+		cmd := "crossfade " + strconv.FormatInt(opt, 10)
+		fmt.Println(cmd)
+		send(cmd)
+	} else {
+		cmd := "crossfade " + strconv.FormatInt(opt, 10)
+		fmt.Println("send int", cmd)
+		send(cmd)
 	}
 }
 
@@ -42,6 +72,12 @@ func toggle(command string, option string) {
 
 	cmd := command + " " + opt
 	send(cmd) 
+
+	if opt == "1" {
+		fmt.Printf("%v is now ON\n", command)
+	} else {
+		fmt.Printf("%v is now OFF\n", command)
+	}
 }
 
 

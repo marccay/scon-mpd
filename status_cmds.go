@@ -21,7 +21,12 @@ func status_tree (opt string) {
 		case "consume":
 			fmt.Println(single_att(opt))
 		case "crossfade", "fade", "xfade":
-			fmt.Println(single_att("xfade"))
+			s := single_att("xfade")
+			if s != "" {
+				fmt.Println(single_att("xfade"))
+			} else {
+				fmt.Println("off")
+			}
 		case "state":
 			fmt.Println(single_att(opt))
 		case "time":

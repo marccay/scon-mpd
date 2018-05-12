@@ -11,14 +11,14 @@ import (
 )
 
 
-func single_att(attribute string) string {
-        att := status()
-	if attribute == "state" || attribute == "duration" || attribute == "elapsed" {
-		return att[attribute]
-	} else if attribute == "time" {
-		return att["elapsed"] + "/" + att["duration"]
+func single_att(att string) string {
+        attributes := status()
+	if att == "state" || att == "duration" || att == "elapsed" || att == "xfade" {
+		return attributes[att]
+	} else if att == "time" {
+		return attributes["elapsed"] + "/" + attributes["duration"]
 	} else {
-		is_On, _ := is_att_on(att[attribute])
+		is_On, _ := is_att_on(attributes[att])
 		return is_On
 	}
 }
@@ -61,8 +61,11 @@ func print_status() {
 	fmt.Println("single:", is_On)
 	is_On, _ = is_att_on(att["consume"])
 	fmt.Println("consume:", is_On)
-	is_On, _ = is_att_on(att["xfade"])
-	fmt.Println("crossfade:", is_On)
+	if att["xfade"] != "" {
+		fmt.Println("crossfade:", att["xfade"])
+	} else {
+		fmt.Println("crossfade:", "off")
+	}
 
 	if att["state"] == "play" || att["state"] == "pause" {
 		fmt.Println("elapsed", att["elapsed"])
