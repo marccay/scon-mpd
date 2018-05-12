@@ -12,7 +12,7 @@ import (
 
 
 func single_att(att string) string {
-        attributes := status()
+        attributes := get_map("status")
 	if att == "state" || att == "duration" || att == "elapsed" || att == "xfade" {
 		return attributes[att]
 	} else if att == "time" {
@@ -32,7 +32,7 @@ func is_att_on(stat string) (string, int) {
 }
 
 func song_time() (float64, float64, uint64) {
-	att := status()
+	att := get_map("status")
 	duration, err := strconv.ParseFloat(att["duration"], 64)
 	if err != nil {
 		os.Exit(1)
@@ -51,7 +51,7 @@ func song_time() (float64, float64, uint64) {
 
 
 func print_status() {
-        att := status()
+        att := get_map("status")
 	fmt.Println("state:", att["state"])
 	is_On, _ := is_att_on(att["repeat"])
 	fmt.Println("repeat:", is_On)
@@ -73,7 +73,7 @@ func print_status() {
 	}
 }
 
-func status() map[string]string {
+func get_map(val string) map[string]string {
         conn, err := net.Dial("tcp", ":6600")
         if err != nil {
                 os.Exit(1)
@@ -83,7 +83,7 @@ func status() map[string]string {
         att := make(map[string]string)
         for {
                 serv_ok(conn)
-                conn.Write([]byte("status\n"))
+                conn.Write([]byte(val+"\n"))
                 m := bufio.NewReader(conn)
                 for {
                         line, err := m.ReadString('\n')

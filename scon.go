@@ -14,6 +14,8 @@ func main() {
 			opt = os.Args[2]
 		}
 		switch cmd {
+			case "currentsong", "current", "song":
+				current_song()
 			case "play":
 				send("play")
 			case "stop":
