@@ -48,8 +48,8 @@ CLI Commands:
 		: "random" | "rand"				random toggle: on/off
 		: "single"					single repeat: on/off
 		: "consume"					consume song from playlist after play: on/off
-		: "crossfade" | "fade" | "xfade"		crossfade: on/off
+		: "crossfade" | "fade" | "xfade"		crossfade: off/seconds
 		: "time"					prints elapsed/duration
-		: "elapsed"					elapsed time of song in minutes
-		: "duration"					total duration of song in minutes
+		: "elapsed"					elapsed time of song in seconds
+		: "duration"					total duration of song in seconds
 	

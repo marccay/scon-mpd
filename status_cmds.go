@@ -5,38 +5,37 @@ import (
 	"os"
 )
 
-
-func status_tree (opt string) {
+func statusTree(opt string) {
 	switch opt {
-		case "":
-			print_status()
-		case "all":
-			print_status()
-		case "random", "rand":
-			fmt.Println(single_att("random"))
-		case "repeat":
-			fmt.Println(single_att(opt))
-		case "single":
-			fmt.Println(single_att(opt))
-		case "consume":
-			fmt.Println(single_att(opt))
-		case "crossfade", "fade", "xfade":
-			s := single_att("xfade")
-			if s != "" {
-				fmt.Println(single_att("xfade"))
-			} else {
-				fmt.Println("off")
-			}
-		case "state":
-			fmt.Println(single_att(opt))
-		case "time":
-			fmt.Println(single_att(opt))
-		case "elapsed":
-			fmt.Println(single_att(opt))
-		case "duration":
-			fmt.Println(single_att(opt))
-		default:
-			fmt.Println("option not available")
-			os.Exit(1)
+	case "":
+		printStatus()
+	case "all":
+		printStatus()
+	case "random", "rand":
+		fmt.Println(singleAtt("random"))
+	case "repeat":
+		fmt.Println(singleAtt(opt))
+	case "single":
+		fmt.Println(singleAtt(opt))
+	case "consume":
+		fmt.Println(singleAtt(opt))
+	case "crossfade", "fade", "xfade":
+		s := singleAtt("xfade")
+		if s != "" {
+			fmt.Println(singleAtt("xfade"))
+		} else {
+			fmt.Println("off")
+		}
+	case "state":
+		fmt.Println(singleAtt(opt))
+	case "time":
+		fmt.Println(singleAtt(opt))
+	case "elapsed":
+		fmt.Println(singleAtt(opt))
+	case "duration":
+		fmt.Println(singleAtt(opt))
+	default:
+		fmt.Println("option not available")
+		os.Exit(1)
 	}
 }

@@ -1,19 +1,18 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"net"
-	"bufio"
 	"os"
 	"strconv"
 )
 
-
 func previous(option string) {
 	if option == "smart" || option == "s" {
-		elapsed, _, song_id := song_time()
+		elapsed, _, songID := songTime()
 		if elapsed >= 10.00 {
-			cmd := "seek " + strconv.FormatUint(song_id, 10) + " 0"
+			cmd := "seek " + strconv.FormatUint(songID, 10) + " 0"
 			send(cmd)
 		} else {
 			send("previous")
@@ -33,8 +32,8 @@ func crossfade(option string) {
 		} else if option == "off" || option == "OFF" {
 			opt = 0
 		} else if option == "" {
-			current_att := single_att("xfade")
-			if current_att == "" {
+			currentAtt := singleAtt("xfade")
+			if currentAtt == "" {
 				opt = 10
 			} else {
 				opt = 0
@@ -54,10 +53,10 @@ func crossfade(option string) {
 
 func toggle(command string, option string) {
 	var opt string
-	current_att := single_att(command)
+	currentAtt := singleAtt(command)
 
 	if option == "" {
-		if current_att == "on" {
+		if currentAtt == "on" {
 			opt = "0"
 		} else {
 			opt = "1"
@@ -71,7 +70,7 @@ func toggle(command string, option string) {
 	}
 
 	cmd := command + " " + opt
-	send(cmd) 
+	send(cmd)
 
 	if opt == "1" {
 		fmt.Printf("%v is now ON\n", command)
@@ -80,27 +79,25 @@ func toggle(command string, option string) {
 	}
 }
 
-
 func send(command string) {
-        conn, err := net.Dial("tcp", ":6600")
-        if err != nil {
-                os.Exit(1)
-        }
-        defer conn.Close()
+	conn, err := net.Dial("tcp", ":6600")
+	if err != nil {
+		os.Exit(1)
+	}
+	defer conn.Close()
 
-        for  {
-                serv_ok(conn)
-                conn.Write([]byte(command + "\n"))
-                serv_ok(conn)
-                break
-        }
+	for {
+		servOk(conn)
+		conn.Write([]byte(command + "\n"))
+		servOk(conn)
+		break
+	}
 }
 
-func serv_ok(conn net.Conn) {
-        m := bufio.NewReader(conn)
-        ok,_ := m.ReadString('\n')
-        if byte(ok[0]) != 79 || byte(ok[1]) != 75 {
-                os.Exit(1)
-        }
+func servOk(conn net.Conn) {
+	m := bufio.NewReader(conn)
+	ok, _ := m.ReadString('\n')
+	if byte(ok[0]) != 79 || byte(ok[1]) != 75 {
+		os.Exit(1)
+	}
 }
-
