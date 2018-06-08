@@ -35,7 +35,7 @@ func statusTree(opt string) {
 	case "duration":
 		fmt.Println(singleAtt(opt))
 	default:
-		fmt.Println("option not available")
+		fmt.Printf("status option [%v] not available\n", opt)
 		os.Exit(1)
 	}
 }
