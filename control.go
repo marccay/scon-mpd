@@ -80,7 +80,8 @@ func toggle(command string, option string) {
 }
 
 func send(command string) {
-	conn, err := net.Dial("tcp", ":6600")
+	addr, err := readConfig()
+	conn, err := net.Dial("tcp", addr)
 	if err != nil {
 		os.Exit(1)
 	}

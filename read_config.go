@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func readConfig() (string, error) {
@@ -11,7 +12,8 @@ func readConfig() (string, error) {
 	configPath := filepath.Join(homePath, ".config", "sconmpd", "config")
 	b, err := ioutil.ReadFile(configPath)
 	if err != nil {
-		return "", err
+		return ":6600", err
 	}
-	return string(b), nil
+	n := strings.Split(string(b), "\n")
+	return n[0], nil
 }
