@@ -71,7 +71,15 @@ func printStatus() {
 }
 
 func getMap(val string) map[string]string {
-	conn, err := net.Dial("tcp", ":6600")
+	var address string
+	addr, err := readConfig()
+	if err != nil {
+		address = ":6600"
+	} else {
+		address = addr
+	}
+
+	conn, err := net.Dial("tcp", address)
 	if err != nil {
 		os.Exit(1)
 	}

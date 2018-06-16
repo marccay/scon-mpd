@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	if len(os.Args) < 2 || len(os.Args) > 3 {
+	if len(os.Args) < 2 || len(os.Args) > 4 {
 		os.Exit(1)
 	} else {
 		cmd := os.Args[1]
@@ -59,8 +59,7 @@ func main() {
 }
 
 func help() {
-	fmt.Println("usage:  scon-mpd [command] [option]")
-	fmt.Println()
+	fmt.Printf("usage:  scon-mpd [command] [option]\n\n")
 	fmt.Println("commands:")
 	fmt.Println("  play\t\t play current song")
 	fmt.Println("  pause\t\t toggles pause")
