@@ -74,6 +74,7 @@ func getMap(val string) map[string]string {
 	addr, err := readConfig()
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
+		fmt.Println("mpdd off")
 		os.Exit(1)
 	}
 	defer conn.Close()

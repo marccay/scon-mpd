@@ -83,6 +83,7 @@ func send(command string) {
 	addr, err := readConfig()
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
+		fmt.Println("mpdd off")
 		os.Exit(1)
 	}
 	defer conn.Close()
@@ -99,6 +100,7 @@ func servOk(conn net.Conn) {
 	m := bufio.NewReader(conn)
 	ok, _ := m.ReadString('\n')
 	if byte(ok[0]) != 79 || byte(ok[1]) != 75 {
+		fmt.Println("error")
 		os.Exit(1)
 	}
 }
